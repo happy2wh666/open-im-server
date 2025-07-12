@@ -115,6 +115,8 @@ func (m *msgServer) messageVerification(ctx context.Context, data *msg.SendMsgRe
 			}
 			return err
 		}
+		data.MsgData.SenderNickname = groupMemberInfo.Nickname // 强制覆盖为群昵称
+		data.MsgData.SenderFaceURL = groupMemberInfo.FaceURL   // 强制覆盖为群成员头像
 		if groupMemberInfo.RoleLevel == constant.GroupOwner {
 			return nil
 		} else {
